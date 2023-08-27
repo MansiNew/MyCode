@@ -1,0 +1,940 @@
+Webservices=>
+
+*Web services are client and server applications that communicate over the World Wide Web's (WWW)
+ HyperText Transfer Protocol (HTTP).
+
+*Web service is a technology to communicate one programming language with another. 
+For example, java programming language can interact with PHP and .Net by using web services. 
+In other words, web service provides a way to achieve interoperability.
+
+Two types=>
+Rest=>
+*REST stands for REpresentational State Transfer.REST is an architectural style not a protocol.
+*Fast: RESTful Web Services are fast because there is no strict specification like SOAP. It consumes less bandwidth and resource.
+*Language and Platform independent: RESTful web services can be written in any programming language and executed in any platform.
+*Can use SOAP: RESTful web services can use SOAP web services as the implementation.
+*Permits different data format: RESTful web service permits different data format such as Plain Text, HTML, XML and JSON.
+
+Key Terminology of Web Services=>
+
+Request and Response: Request is the input to a web service, and the response is the output from a web service.
+
+Message Exchange Format: It is the format of the request and response. There are two popular message exchange 
+formats: XML and JSON.
+
+Service Provider or Server: Service provider is one which hosts the web service.
+
+Service Consumer or Client: Service consumer is one who is using the web service.
+
+Service Definition: Service definition is the contract between the service provider and service consumer. 
+Service definition defines the format of request and response, request structure, response structure, and endpoint.
+
+Transport: Transport defines how a service is called. There is two popular way of calling a service: HTTP 
+and Message Queue (MQ). By tying the URL of service, we can call the service over the internet. MQ communicates 
+over the queue. The service requester puts the request in the queue. As soon as the service provider listens to the request.
+ It takes the request, process the request, and create a response, and put the response back into MQ
+. The service requester gets the response from the queue. The communication happens over the queue.
+
+charactersitics=>
+Loosely Coupled
+A web service supports loosely coupled connections between systems. It communicates by passing XML message 
+to each other via a web API. Web API adds a layer of 
+abstraction to the environment that makes the connection adaptable and flexible.
+
+Capability to be synchronous and asynchronous
+
+-------------------------------------------------------------------------------
+Architecture of Web Services=>*The Web Services architecture describes how to 
+instantiate the elements and implement the operations in an interoperable manner.
+
+*The architecture of web service interacts among three roles: service provider, service requester, 
+and service registry. The interaction involves the three operations: publish, find, and bind. 
+These operations and roles act upon the web services artifacts.
+ The web service artifacts are the web service software module and its description.
+
+*There are three roles in web service architecture:
+
+Service Pr
+ovider
+Service Requestor
+Service Registry
+
+Service Provider
+
+From an architectural perspective, it is the platform that hosts the services.
+
+Service Requestor
+
+Service requestor is the application that is looking for and invoking or initiating an interaction with a service. 
+The browser plays the requester role, driven by a consumer or a program without a user interface.
+
+Service Registry
+
+Service requestors find service and obtain binding information for services during development.
+
+*Artifacts of the web service
+There are two artifacts of web services:
+
+
+Service
+Service Registry
+Service: A service is an interface described by a service description. The service description is
+ the implementation of the service. A service is a software module deployed on network-accessible
+ platforms provided by the service provider. It interacts with a service requestor. Sometimes it also
+ functions as a requestor, using other Web Services in its implementation.
+
+Service Description: The service description comprises the details of the interface and implementation 
+of the service. It includes its data types, operations, binding information, and network location
+---------------------------------------------------------------------
+Types=>
+1> restfull webservices=>
+
+Q>What do you understand by RESTful Web Services?
+RESTful web services are services that follow REST architecture. REST stands 
+for Representational State Transfer and uses HTTP protocol (web protocol) for 
+implementation. These services are lightweight, provide maintainability, scalability, 
+support communication among multiple applications that are developed using different programming languages.
+ They provide means of accessing resources present at server required for the client via the web browser by means 
+of request headers, request body, response body, status codes, etc.
+--------------------------------------------------------
+2. What is a REST Resource?
+Every content in the REST architecture is considered a resource. The resource is analogous to
+ the object in the object-oriented programming world. They can 
+either be represented as text files, HTML pages, images, or any other dynamic data.
+------------------------------------------------------------------------------------
+Q 3. What is URI?
+Uniform Resource Identifier is the full form of URI which is used for identifying each resource of the REST architecture. 
+URI is of the format:
+
+<protocol>://<service-name>/<ResourceType>/<ResourceID>
+There are 2 types of URI:
+
+*URN: Uniform Resource Name identifies the resource by means of a name that is both unique and persistent.
+URN doesn’t always specify where to locate the resource on the internet. They are used as
+ templates that are used by other parsers to identify the resource.
+These follow the urn scheme and usually prefixed with urn:. Examples include
+urn:isbn:1234567890 
+
+*URL: Uniform Resource Locator has the information regarding fetching of a resource from its location.
+Examples include:
+http://abc.com/samplePage.html
+------------------------------------------------------------------------------
+Q features of rest api=>
+
+*the service is based on the Client-Server model.
+*The service uses HTTP Protocol for fetching data/resources, query execution, or any other functions.
+*The medium of communication between the client and server is called “Messaging”.
+*Resources are accessible to the service by means of URIs.
+*It follows the statelessness concept where the client request and response are not dependent on others 
+and thereby provides total assurance of getting the required data.
+*These services also use the concept of caching to minimize the server calls for the same type of repeated requests.
+*These services can also use SOAP services as implementation protocol to REST architectural pattern
+
+-----------------------------------------------------------------------------
+Q   Diff. b/w stateless and statefull
+
+Stateful	                                                                          Stateless
+*Stateful Protocols require the server to save the state of a process.	Stateless Protocols do not need the server to save the state of a process.
+*Stateful expects a response and if no answer is received, 	        In stateless, the client sends a request to a server,
+the request is resent.                                                 which the server responds to based on the state of the request.
+
+*This makes the design heavy and complex since data needs to be stored.	      Server design is simplified in this case.
+ 
+The server is required to store and save status information and details of sessions.	No server is needed for data storage.
+
+Server and Client are tightly coupled, as in extremely interdependent on each other.	Server and Client are more independent and hence, loosely coupled.
+
+Requests are always dependent on the server-side.	  Requests are self-contained and not dependent on the server side.
+
+it is difficult to code as one of the salient features here is data storage.	    It is much easier to code.
+Examples	Telnet, FTP (File Transfer Protocol), etc.	HTTP, UDP (User Datagram Protocol), DNS (Domain Name System), etc
+
+
+.
+-----------------------------------------------------------------
+Q What is the concept of statelessness in REST?
+The REST architecture is designed in such a way that the client state is not maintained on the server
+. This is known as statelessness. The context is provided by the client to the server using which the server processes 
+the client’s request. The session on the server is identified by the session identifier sent by the client.
+----------------------------------------------------------------------------------------
+Q 7. What are HTTP Status codes?
+These are the standard codes that refer to the predefined status of the task at the server
+
+200 - success/OK
+201 - CREATED - used in POST or PUT methods.
+301 -  Found
+304 - NOT MODIFIED - used in conditional GET requests to reduce the bandwidth use of the network. Here, the body of the response sent should be empty.
+400 - BAD REQUEST - This can be due to validation errors or missing input data.
+401- UNAUTHORIZED - This is returned when there is no valid authentication credentials sent along with the request.
+403 - FORBIDDEN - sent when the user does not have access (or is forbidden) to the resource.
+404 - NOT FOUND - Resource method is not available.
+500 - INTERNAL SERVER ERROR - server threw some exceptions while running the method.
+502 - BAD GATEWAY - Server was not able to get the response from another upstream server.
+503  - service unavailable
+-----------------------------------------------------------------------
+Q http methods=>
+*OPTIONS: This fetches the list of supported options of resources present on the server.
+*This method is used to determine what methods are allowed for a particular resource. For example, 
+if a resource supports the GET, POST, and PUT methods, the OPTIONS method will return this information.
+
+@Path("books")
+public class OptionsMethodExample {
+ 
+  @OPTIONS
+  @Produces(MediaType.APPLICATION_JSON)
+  @Path("/")
+  public Response optionsForBookResource() {        
+      return Response.status(200)
+        .header("Allow","POST, PUT, GET")
+        .header("Content-Type", MediaType.APPLICATION_JSON)
+        .header("Content-Length", "0")
+        .build();
+  }
+-------------------------------------------------------------------------------
+Q diff b/w put and patch mapping
+
+put                                                                             patch
+
+PUT is a method of modifying resource where the client                      PATCH is a method of modifying resources where the client sends partial
+. sends data that updates the entire resource                              data that is to be updated without modifying the entire data.
+
+It has High Bandwidth 	                                    Since Only data that need to be modified if send in the request body as a payload , It has Low Bandwidth 
+
+----------------------------------------------------------------------------------
+Q disadvantage of rest api
+
+As the services follow the idea of statelessness, it is not possible to maintain sessions.
+ (Session simulation responsibility lies on the client-side to pass the session id)
+--------------------------------------------------------------------------------------
+Q Define Messaging in terms of RESTful web services.
+
+Define Messaging in terms of RESTful web services.
+The technique of sending a message from the REST client to the REST server in the form of an HTTP request 
+and the server responding back with the response as HTTP Response is called Messaging.
+ The messages contained constitute the data and the metadata about the message.
+----------------------------------------------------------------------------------
+Q  What is soap=>
+
+SOAP: SOAP acronym for Simple Object Access Protocol. It defines the standard XML format.
+ It also defines the way of building web services. We use Web Service Definition Language (WSDL) 
+to define the format of request XML and the response XML.
+
+For example, we have requested to access the Todo application from the Facebook application. 
+The Facebook application sends an XML request to the Todo application. Todo application processes the 
+request and generates the XML response and sends back to the Facebook application.
+
+ex.
+
+XML Request
+
+<Envelop xmlns=?http://schemas.xmlsoap.org/soap/envelop/?>  
+    <Body>  
+        <getCourseDetailRequest xmlns=?http://udemy.com/course?>  
+            <id>course1</id>  
+        <getCourseDetailRequest>  
+    </Body>  
+</Envelop> 
+
+
+
+XML Response
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV=?http://schemas.xmlsoap.org/soap/envelope/?>  
+          <SOAP-ENV:Header />             <!?empty header-->  
+           <SOAP-ENV:Body>                <!?body begin-->  
+                  <ns2:getCourseDetailsResponse xmlns:ns2=?http://in28mi> <!--content of the response-->  
+                   <ns2:course>  
+                    <ns2:id>Course1</ns2:id>  
+                    <ns2:name>Spring<ns2:name>  
+                    <ns2:description>10 Steps</ns1:description>  
+                    </ns2:course>  
+                    </ns2:getCourseDetailResponse>  
+               </SOAP-ENV:Body>       <!?body end-->  
+</SOAP-ENV:Envelope>  
+-------------------------------------------------------------------------------------
+Q   dif b/w soap and rest
+
+    SOAP                                                                       REST
+
+SOAP - Simple Object Access Protocol 	                              REST - Representational State Transfer
+
+SOAP is a protocol used to implement web services.	  REST is an architectural design pattern for developing web services
+
+SOAP cannot use REST as it is a protocol.	         REST architecture can have SOAP protocol as part of the implementation.
+
+SOAP specifies standards that are meant to be followed strictly.	REST defines standards but they need not be strictly followed.
+
+SOAP client is more tightly coupled to the server 	          The REST client is more flexible like a browser and does not depend on
+which is similar to desktop applications having strict contracts.  how the server is developed unless it follows the protocols required for
+                                                                      establishing communication.
+
+SOAP uses service interfaces for exposing the resource logic.	REST uses URI to expose the resource logic.
+SOAP is slower.                                                 	REST is faster.
+Since SOAP is a protocol, it defines its own security measures.  	REST only inherits the security measures based on what protocol it uses for the implementation.
+
+
+SOAP is not commonly preferred, but they are used REST is commonly     preferred by developers these days as it 
+in cases which require stateful data transfer and more reliability.	provides more scalability and maintainability
+
+SOAP supports only XML transmission between the client and the server.	REST supports data of multiple formats like XML, JSON,
+                                                                            MIME, Text, etc.
+
+--------------------------------------------------------------------------------------------------
+Q While creating URI for web services, what are the best practices that needs to be followed?
+
+*recommended naming convension small letters
+*use plural nouns  /users
+*Use the technique of forward slashing to indicate the hierarchy between the resources
+----------------------------------------------------------------------------------------
+
+Q What are the best practices to develop RESTful web services?
+
+*Error Handling should be done gracefully by returning appropriate error codes
+*While retrieving huge resource data, it is advisable to include filtering and pagination of the resources. 
+This is because returning huge data all at once can slow down the system
+*Good security practices are a must while developing REST APIs. 
+The client-server communication must be private due to the nature of data sensitivity
+*Since REST supports multiple data formats, it is however good practice to develop REST APIs that 
+accept and responds with JSON data format whenever possible.
+-------------------------------------------------------------------------------------
+
+QWhat are Idempotent methods? How is it relevant in RESTful web services domain?
+
+*The meaning of idempotent is that even after calling a single request multiple times, 
+the outcome of the request should be the same. While designing REST APIs, we need to keep
+ in mind to develop idempotent APIs. This is because the consumers can write client-side code
+ which can result in duplicate requests intentionally or not. Hence, fault-tolerant APIs need to 
+be designed so that they do not result in erroneous responses.
+
+*Idempotent methods ensure that the responses to a request if called once or ten times or more than that
+ remain the same. This is equivalent to adding any number with 0.
+
+*REST provides idempotent methods automatically. GET, PUT, DELETE, HEAD, OPTIONS, and TRACE are the idempotent HTTP methods.
+ POST is not idempotent.
+
+*POST is not idempotent because POST APIs are usually used for creating a new resource on the server. While calling POST methods
+ N times, there will be N new resources. This does not result in the same outcome at a time.
+Methods like GET, OPTIONS, TRACE, and HEAD are idempotent because they do not change the state of resources on the server. 
+-----------------------------------------------------------------------------
+
+Q core component of http request
+method,URI,
+HTTP Version − This part indicates what version of HTTP protocol you are using. An example can be HTTP v1.1.
+*Request Header − This part has the details of the request metadata such as client type, the content format supported,
+ message format, cache settings, etc.
+Request Body − This part represents the actual message content to be sent to the server.
+------------------------------------------------------------------------------------------------
+Q What makes REST services to be easily scalable?
+REST services follow the concept of statelessness which essentially means no storing of any data
+ across the requests on the server. This makes it easier to scale horizontally because the servers need not 
+communicate much with each other while serving requests.
+---------------------------------------------------------------------------
+Q  Based on what factors, you can decide which type of web services you need to use - SOAP or REST?
+
+*REST services have gained popularity due to the nature of simplicity, scalability, faster speed, improved performance, 
+and multiple data format support. But, SOAP has its own advantages too. Developers use SOAP where the services require
+ advanced security and reliability.
+
+*Do you want to expose resource data or business logic?
+SOAP is commonly used for exposing business logic and REST for exposing data.
+Does the client require a formal strict contract?
+If yes, SOAP provides strict contracts by using WSDL. Hence, SOAP is preferred here.
+Does your service require support for multiple formats of data?
+If yes, REST supports multiple data formats which is why it is preferred in this case.
+Does your service require AJAX call support?
+If yes, REST can be used as it provides the XMLHttpRequest.
+Does your service require both synchronous and asynchronous requests?
+SOAP has support for both sync/async operations.
+REST only supports synchronous calls.
+Does your service require statelessness?
+If yes, REST is suitable. If no, SOAP is preferred.
+Does your service require a high-security level?
+If yes, SOAP is preferred. REST inherits the security property based on the underlying 
+implementation of the protocol. Hence, it can’t be preferred at all times.
+Does your service require support for transactions?
+If yes, SOAP is preferred as it is good in providing advanced support for transaction management.
+What is the bandwidth/resource required?
+SOAP involves a lot of overhead while sending and receiving XML data, hence it consumes a lot of bandwidth.
+REST makes use of less bandwidth for data transmission.
+Do you want services that are easy to develop, test, and maintain frequently?
+REST is known for simplicity, hence it is preferred.
+
+
+
+--------------------------------------------------------------------------- 
+Q diff b/w rest api and websocket 
+
+REST	                                                                   Web Socket
+REST follows stateless architecture, meaning it 	Web Socket APIs follow the stateful protocol as 
+won’t store any session-based data.                      it necessitates session-based data storage.
+
+The mode of communication is uni-directional. 	         The communication is bi-directional, communication can
+ At a time, only the server or the client will communicate.        be done by both client or server at a time.
+
+REST is based on the Request-Response Model.	          Web Socket follows the full-duplex model.
+
+Every request will have sections like header, title, body, URL, etc.	Web sockets do not have any overhead and hence suited for real-time communication.
+
+For every HTTP request, a new TCP connection is set up.	   s There will be only one TCP connection and then the client and server can start communicating.
+
+REST depends on HTTP methods to get the response.	   Web Sockets depend on the IP address and port number of the system to get a response.
+
+Communication is slower here.	                            Message transmission happens very faster than REST API.
+
+Memory/Buffers are not needed to store data here.	Memory is required to store data.
+---------------------------------------------------------------------------------------
+
+Q Can we implement transport layer security (TLS) in REST?
+Yes, we can. TLS does the task of encrypting the communication between the REST client and the
+ server and provides the means to authenticate the server to the client. It is used for secure 
+communication as it is the successor of the Secure Socket Layer (SSL). HTTPS works well with both 
+TLS and SSL thereby making it effective while implementing RESTful web services. 
+-------------------------------------------------------------------------------------------------------
+
+sQ  Should we make the resources thread safe explicitly if they are made to share across multiple clients?
+There is no need to explicitly making the resources thread-safe because, upon every request,
+ new resource instances are created which makes them thread-safe by default
+----------------------------------------------------------------------------------------------
+Q  What is Payload in terms of RESTful web services?
+Payload refers to the data passes in the request body. It is not the same as the request parameters. 
+The payload can be sent only in POST methods as part of the request body
+-----------------------------------------------------------------------------------------
+Q What is Payload in terms of RESTful web services?
+Payload refers to the data passes in the request body. It is not the same as the request parameters.
+ The payload can be sent only in POST methods as part of the request body.
+--------------------------------------------------------------------------------
+Q  What is the maximum payload size that can be sent in POST methods?
+Theoretically, there is no restriction on the size of the payload that can be sent. 
+But one must remember that the greater the size of the payload, the larger would be the bandwidth consumption 
+and time taken to process the request that can impact the server performance.
+-------------------------------------------------------------------------------
+Q  30. What is the difference between idempotent and safe HTTP methods?
+Safe methods are those that do not change any resources internally. These methods can be cached and can
+ be retrieved without any effects on the resource.
+
+
+HTTP Methods	Idempotent 	Safe
+OPTIONS 	yes	                 yes
+GET	        yes	                 yes
+HEAD	        yes	                 yes
+PUT	       yes	                  no
+POST	      no	                  no
+DELETE	      yes	                  no
+PATCH	       no	                   no
+------------------------------------------------------------------
+xml as a output=>@RequestMapping(path = "/xml-output",
+                produces = "application/xml")
+-----------------------------------------------------------------
+ 
+____________________________________________________________________________________________________________________________
+SQL=>     
+
+join b/w three tables
+
+SELECT *
+  FROM table1
+  INNER JOIN table2
+  ON table1.id = table2.id
+  INNER JOIN table3
+  ON table2.id = table3.id;
+---------------------------------------------------------******************************-----------------------------------
+Indexing=>
+*The Index in SQL is a special table used to speed up the searching of the data in the database tables. 
+It also retrieves a vast amount of data from the tables frequently.
+
+*SQL Indexes can search the information of the large database quickly.
+CREATE INDEX Index_Name ON Table_Name ( column_name1, column_name2, ...., column_nameN);  
+
+unique indexing=>
+
+*Unique Index is the same as the Primary key in SQL. The unique index does not
+ allow selecting those columns which contain duplicate values.
+
+CREATE UNIQUE INDEX index_salary ON Employee (Emp_Salary); 
+
+*When should INDEXES not be used in SQL?
+The Indexes should not be used in SQL in the following cases or situations:
+
+SQL Indexes can be avoided when the size of the table is small.
+When the table needs to be updated frequently.
+Indexed should not be used on those cases when the column of a table contains a large number of NULL values. 
+
+---------------------------------------------------------*************---------------------------------------------------
+Partitioning=>
+*Database Partitioning is a process where large tables are divided 
+into smaller parts or chunks which makes it easier to fetch records 
+
+*Partitioning is the database process where very large tables are divided into multiple smaller parts.
+ By splitting a large table into smaller, individual tables, queries that access only a fraction of the data 
+can run faster because there is less data to scan. The main of goal of partitioning is to aid in maintenance
+ of large tables and to reduce the overall response time to read and load data for particular SQL operations.
+
+Range =>This partitioning allows us to partition the rows of a table based on column values that fall within a specified range. 
+
+CREATE TABLE Sales ( cust_id INT NOT NULL, name VARCHAR(40),   
+store_id VARCHAR(20) NOT NULL, bill_no INT NOT NULL,   
+bill_date DATE PRIMARY KEY NOT NULL, amount DECIMAL(8,2) NOT NULL)   
+PARTITION BY RANGE (year(bill_date))(   
+PARTITION p0 VALUES LESS THAN (2016),   
+PARTITION p1 VALUES LESS THAN (2017),   
+PARTITION p2 VALUES LESS THAN (2018),   
+PARTITION p3 VALUES LESS THAN (2020));  
+
+
+List=>
+
+*It is the same as Range Partitioning. Here, the partition is defined and selected based on columns 
+matching one of a set of discrete value lists rather than a set of a contiguous range of values.
+
+CREATE TABLE Stores (   
+    cust_name VARCHAR(40),   
+    bill_no VARCHAR(20) NOT NULL,   
+    store_id INT PRIMARY KEY NOT NULL,   
+    bill_date DATE NOT NULL,   
+    amount DECIMAL(8,2) NOT NULL  
+)  
+PARTITION BY LIST(store_id) (   
+PARTITION pEast VALUES IN (101, 103, 105),   
+PARTITION pWest VALUES IN (102, 104, 106),   
+PARTITION pNorth VALUES IN (107, 109, 111),   
+PARTITION pSouth VALUES IN (108, 110, 112));
+
+Hash=>
+*This partitioning is used to distribute data based on a predefined number of partitions.
+ In other words, it splits the table as of the value returned by the user-defined expression. It is mainly used
+ to distribute data evenly into the partition. It is performed with the PARTITION BY HASH(expr) clause. 
+
+CREATE TABLE Stores (   
+    cust_name VARCHAR(40),   
+    bill_no VARCHAR(20) NOT NULL,   
+    store_id INT PRIMARY KEY NOT NULL,   
+    bill_date DATE NOT NULL,   
+    amount DECIMAL(8,2) NOT NULL  
+)  
+PARTITION BY HASH(store_id)  
+PARTITIONS 4;  
+
+NOTE: If you do not use the PARTITIONS clause, the number of partitions will be one by default. If you do not
+ specify the number with the PARTITIONS keyword, it will throw an error.
+-----------------------------------------------------------***************--------------------------------------------------
+
+Trigger=>
+*A trigger is a set of SQL statements that reside in system memory with unique names. 
+It is a specialized category of stored procedure that is called automatically when a database server
+ event occurs. Each trigger is always associated with a table.
+
+*A trigger is called a special procedure because it cannot be called directly like a stored procedure. 
+
+We cannot manually execute/invoked triggers.
+Triggers have no chance of receiving parameters.
+A transaction cannot be committed or rolled back inside a trigger.
+
+*When we use triggers?
+Triggers will be helpful when we need to execute some events automatically on certain desirable scenarios. 
+For example, we have a constantly changing table and need to know the occurrences of changes 
+
+CREATE TRIGGER trInsertEmployee   
+ON Employee  
+FOR INSERT  
+AS  
+BEGIN  
+  Declare @Id int  
+  SELECT @Id = Id from inserted  
+  INSERT INTO Employee_Audit_Test  
+  VALUES ('New employee with Id = ' + CAST(@Id AS VARCHAR(10)) + ' is added at ' + CAST(Getdate() AS VARCHAR(22)))  
+END 
+
+
+
+-----------------------------------------------------------***************-------------------------------------------------
+DDL,DML,DCL=>
+
+DDL=>   *DDL changes the structure of the table like creating a table, deleting a table, altering a table, etc.
+All the command of DDL are auto-committed that means it permanently save all the changes in the database.
+Here are some commands that come under DDL:
+
+CREATE
+ALTER
+DROP
+TRUNCATE
+
+DML=>2. Data Manipulation Language
+DML commands are used to modify the database. It is responsible for all form of changes in the database.
+INSERT, UPDATE,  DELETE
+
+Data Control Language=>
+DCL commands are used to grant and take back authority from any database user.
+
+diff between truncate and delete=>
+delete                                                                               Truncate
+The delete statement is used to remove single or multiple records   The truncate command removes the complete data from an existing
+from an existing table depending on the specified condition.	 table but not the table itself. It preserves the table structure or schema.
+
+It is a DML (Data Manipulation Language) command.	It is a DDL (Data Definition Language) command.
+
+It can use the WHERE clause to filter any specifi	It does not use the WHERE clause to filter records from the table.
+c row or data from the table.
+----------------------------------------------------------------
+*DELETE is a Data Manipulation Language (DML) command. It is used to remove tuples/records from a relation/table.
+ On the other hand, DROP is a Data Definition Language (DDL) command and is used to remove named elements of schema
+ like relations/table, constraints or entire schema.
+-------------------------------------------------------------------************-----------------------------------------
+interview queries=>
+
+SELECT Max(Salary), Min(Salary), AVG(Salary) FROM EmployeeSalary;
+--------------------------------------------------------------------
+SELECT EmpId, Salary FROM EmployeeSalary WHERE Salary BETWEEN 9000 AND 15000;
+----------------------------------------------------------------------
+9. Write an SQL query to display the total salary of each employee adding the Salary with Variable value.
+Here, we can simply use the ‘+’ operator in SQL.
+
+SELECT EmpId,Salary+Variable as TotalSalary FROM EmployeeSalary;
+--------------------------------------------------------------------------
+ Write an SQL query to fetch common records between two tables.
+SELECT *FROM EmployeeSalary WHERE EmpId IN (SELECT EmpId from ManagerSalary);
+---------------------------------------------------------------------------
+Write an SQL query to fetch records that are present in one table but not in another table.
+not in
+-------------------------------------------------------------------------------
+4. Write an SQL query to fetch the EmpIds that are present in both the tables –  ‘EmployeeDetails’ and ‘EmployeeSalary.
+Using subquery-
+
+SELECT EmpId FROM EmployeeDetails where EmpId IN (SELECT EmpId FROM EmployeeSalary);
+--------------------------------------------------------------------------------------
+Q Write an SQL query to fetch the employee’s full names and replace the space with ‘-’.
+Using the ‘Replace’ function-
+
+SELECT REPLACE(FullName, ' ', '-') 
+FROM EmployeeDetails;
+---------------------------------------------------------------------------------
+Q Write an SQL query to fetch the position of a given character(s) in a field.
+Using the ‘Instr’ function-
+
+SELECT INSTR(FullName, 'Snow') FROM EmployeeDetails;
+--------------------------------------------------------------------------
+Q Write a query to fetch only the first name(string before space) from the FullName column of the EmployeeDetails table.
+
+SELECT MID(FullName, 1, LOCATE(' ',FullName)) FROM EmployeeDetails;
+---------------------------------------------------------------------------
+Q  Write an SQL query to find the count of the total occurrences of a particular character – ‘n’ in the FullName field.
+SELECT FullName, 
+LENGTH(FullName) - LENGTH(REPLACE(FullName, 'n', ''))
+FROM EmployeeDetails;
+------------------------------------------------------------------------------
+Q Fetch all the employees who are not working on any project.
+SELECT EmpId FROM EmployeeSalary WHERE Project IS NULL;
+-----------------------------------------------------------------
+QFetch all the employees who are not working on any project.
+SELECT EmpId FROM EmployeeSalary WHERE Project IS NULL;
+-----------------------------------------------------------------
+Q Write an SQL query to fetch all the Employee details from the EmployeeDetails table who joined in the Year 2020.
+SELECT * FROM EmployeeDetails WHERE DateOfJoining BETWEEN '2020/01/01' AND '2020/12/31';
+-----------------------------------------------------------------
+Q  Write an SQL query to fetch all employee records from the EmployeeDetails table who have a salary
+ record in the EmployeeSalary table.
+
+SELECT * FROM EmployeeDetails E WHERE EXISTS(SELECT * FROM EmployeeSalary S WHERE  E.EmpId = S.EmpId);
+--------------------------------------------------------------------
+Q Write an SQL query to fetch the project-wise count of employees sorted by project’s count in descending order.
+
+ SELECT Project, count(EmpId) EmpProjectCount FROM EmployeeSalary GROUP BY Project ORDER BY EmpProjectCount DESC;
+--------------------------------------------------------------------
+Q Write a query to fetch employee names and salary records. Display the employee details even if the salary 
+record is not present for the employee.
+
+SELECT E.FullName, S.Salary FROM EmployeeDetails E LEFT JOIN EmployeeSalary SON E.EmpId = S.EmpId;
+----------------------------------------------------------------------------------
+Q Write an SQL query to fetch all the Employees who are also managers from the EmployeeDetails table.
+SELECT DISTINCT E.FullName FROM EmployeeDetails E INNER JOIN EmployeeDetails M ON E.EmpID = M.ManagerID;
+--------------------------------------------------------------------
+Q Write an SQL query to fetch duplicate records from EmployeeDetails (without considering the primary key – EmpId).
+
+SELECT FullName, ManagerId, DateOfJoining, City, COUNT(*) FROM EmployeeDetails GROUP BY FullName, ManagerId, DateOfJoining, City
+HAVING COUNT(*) > 1;
+------------------------------------------------------------------------
+Q Write an SQL query to remove duplicates from a table without using a temporary table.
+
+DELETE E1 FROM EmployeeDetails E1 INNER JOIN EmployeeDetails E2 WHERE E1.EmpId > E2.EmpId 
+AND E1.FullName = E2.FullName  AND E1.ManagerId = E2.ManagerId AND E1.DateOfJoining = E2.DateOfJoining AND E1.City = E2.City;
+-----------------------------------------------------------------------
+Q Write an SQL query to fetch only odd rows from the table.
+SELECT * FROM EmployeeDetails 
+WHERE MOD (EmpId, 2) <> 0;
+-------------------------------------------------------------------
+Q Write an SQL query to fetch only even rows from the table.
+SELECT * FROM EmployeeDetails WHERE MOD (EmpId, 2) = 0;
+--------------------------------------------------------------------
+Q Write an SQL query to fetch only even rows from the table.
+
+SELECT * FROM EmployeeDetails 
+WHERE MOD (EmpId, 2) = 0;
+---------------------------------------------------------------------
+Q Write an SQL query to create a new table with data and structure copied from another table.
+
+CREATE TABLE NewTable 
+SELECT * FROM EmployeeSalary;
+-------------------------------------------------------------------------------
+Q Write an SQL query to fetch top n records.
+In MySQL using LIMIT-
+
+SELECT * FROM EmployeeSalary ORDER BY Salary DESC LIMIT N;
+
+In SQL server using TOP command-
+
+SELECT TOP N *FROM EmployeeSalary ORDER BY Salary DESC;
+------------------------------------------------------------------------------
+Q first 3 letters of name
+Select substring(FIRST_NAME,1,3) from Worker;
+------------------------------------------------------------------------------------
+Q Write an SQL query to find the position of the alphabet (‘a’) in the first name column ‘Amitabh’ from the Worker table.
+
+Select INSTR(FIRST_NAME, BINARY'a') from Worker where FIRST_NAME = 'Amitabh';
+--------------------------------------------------------------------------------
+Q Write an SQL query to print details for Workers with the first names “Vipul” and “Satish” from the Worker table.
+Select * from Worker where FIRST_NAME in ('Vipul','Satish');
+----------------------------------------------------------------------------
+Q Write an SQL query to print details of the Workers who joined in Feb’2014.
+Select * from Worker where year(JOINING_DATE) = 2014 and month(JOINING_DATE) = 2;
+-----------------------------------------------------------------------------
+Q Write an SQL query to fetch the no. of workers for each department in descending order.
+SELECT DEPARTMENT, count(WORKER_ID) No_Of_Workers  FROM worker GROUP BY DEPARTMENT ORDER BY No_Of_Workers DESC;
+-----------------------------------------------------------------------------
+Q Write an SQL query to print details of the Workers who are also Managers.
+
+SELECT DISTINCT W.FIRST_NAME, T.WORKER_TITLE FROM Worker W
+INNER JOIN Title T ON W.WORKER_ID = T.WORKER_REF_ID AND T.WORKER_TITLE in ('Manager');
+-----------------------------------------------------------------------------
+Q  Write an SQL query to fetch duplicate records having matching data in some fields of a table.
+SELECT WORKER_TITLE, AFFECTED_FROM, COUNT(*) FROM Title GROUP BY WORKER_TITLE, AFFECTED_FROM
+HAVING COUNT(*) > 1;
+-------------------------------------------------------------------------------
+Q  Write an SQL query to clone a new table from another table.
+SELECT * INTO WorkerClone FROM Worker;
+--------------------------------------------------------------
+Q Write an SQL query to fetch the list of employees with the same salary.
+Select distinct W.WORKER_ID, W.FIRST_NAME, W.Salary  from Worker W, Worker W1 
+where W.Salary = W1.Salary and W.WORKER_ID != W1.WORKER_ID;
+-------------------------------------------------------------
+Q Write an SQL query to show one row twice in the results from a table.
+select FIRST_NAME, DEPARTMENT from worker W where W.DEPARTMENT='HR' 
+union all select FIRST_NAME, DEPARTMENT from Worker W1 where W1.DEPARTMENT='HR';
+---------------------------------------------------------------
+Q Write an SQL query to fetch the first 50% of records from a table.
+
+SELECT *FROM WORKER WHERE WORKER_ID <= (SELECT count(WORKER_ID)/2 from Worker);
+------------------------------------------------------------------
+Q Write an SQL query to fetch the departments that have less than five people in them.
+Ans.
+SELECT DEPARTMENT, COUNT(WORKER_ID) as 'Number of Workers' FROM Worker GROUP BY DEPARTMENT HAVING COUNT(WORKER_ID) < 5;
+-------------------------------------------------------------------------
+Q  Write an SQL query to show all departments along with the number of people in there.
+SELECT DEPARTMENT, COUNT(DEPARTMENT) as 'Number of Workers' FROM Worker GROUP BY DEPARTMENT;
+----------------------------------------------------------------------------------
+Q Write an SQL query to show the last record from a table.
+Select * from Worker where WORKER_ID = (SELECT max(WORKER_ID) from Worker);
+----------------------------------------------------------------------------------
+Q  Write an SQL query to print the name of employees having the highest salary in each department.
+not understood
+SELECT t.DEPARTMENT,t.FIRST_NAME,t.Salary from(SELECT max(Salary) as TotalSalary,DEPARTMENT from Worker group by DEPARTMENT)
+ as TempNew Inner Join Worker t on TempNew.DEPARTMENT=t.DEPARTMENT 
+ and TempNew.TotalSalary=t.Salary;
+--------------------------------------------------------------------
+Q  Write an SQL query to show the last record from a table.
+
+Select * from Worker where WORKER_ID = (SELECT max(WORKER_ID) from Worker);
+----------------------------------------------------------------------
+Q  Write an SQL query to fetch the last five records from a table.
+-------------------------------------------------------------------
+Q Write an SQL query to fetch three min and max  salaries from a table.
+
+SELECT  *FROM 
+    (
+    SELECT *FROM emp 
+    ORDER BY Salary desc
+    )
+WHERE rownum <= 3
+ORDER BY Salary ;
+----------------
+select distinct sal
+  from emp a
+where 3 >= (select count(distinct sal)
+              from emp b
+            where a.sal <= b.sal)
+order by a.sal desc;
+------------------------------------------------------------------------
+Q  Write an SQL query to fetch departments along with the total salaries paid for each of them.
+Ans.SELECT DEPARTMENT, sum(Salary) from worker group by DEPARTMENT;
+---------------------------------------------------------------------
+Q Write an SQL query to fetch the names of workers who earn the highest salary.
+Ans.
+SELECT FIRST_NAME, SALARY from Worker WHERE SALARY=(SELECT max(SALARY) from Worker);
+-----------------------------------------------------------------------
+Q What are some tips to improve the performance of SQL queries?
+*Prefer to use views and stored procedures in spite of writing long queries. It’ll also help in minimizing network load.
+*Prevent the usage of DISTINCT and HAVING clauses.
+*Prefer not to use complex joins
+*Make use of table-level variables instead of temporary tables.
+---------------------------------------------------------------
+Q stored procedure=>
+
+*A stored procedure in SQL is a group of SQL statements that are stored together in a database. 
+Based on the statements in the procedure and the parameters you pass, it can perform one or multiple 
+DML operations on the database, and return value, if any.
+
+advantage=>
+
+*Reusable: As mentioned, multiple users and applications can easily use and reuse stored procedures
+ by merely calling it.
+
+*Easy to modify: You can quickly change the statements in a stored procedure as and when you want to, 
+with the help of the ALTER TABLE command.
+
+*Security: Stored procedures allow you to enhance the security of an application or a database by restricting 
+the users from direct access to the table.
+
+*Increases performance: Upon the first use, a plan for the stored procedure is created and 
+stored in the buffer pool for quick execution for the next time.
+
+ex. 
+
+CREATE or REPLACE PROCEDURE name(parameters)
+
+AS
+
+variables;
+
+BEGIN;
+
+//statements;
+
+END;
+
+
+ex 2  => with parameter
+
+CREATE PROCEDURE GetCarDesc_Para
+
+(@CID INT)
+
+AS
+
+BEGIN
+
+SET NOCOUNT ON
+
+SELECT C.CarID,C.CarName,CD.CarDescription  FROM 
+
+Car C
+
+INNER JOIN CarDescription CD ON C.CarID=CD.CarID
+
+WHERE C.CarID=@CID
+
+END
+
+To execute it,
+
+EXEC GetCarDesc_Para 201;
+-------------------------------------------------------------------------
+=>with default perameters
+CREATE PROCEDURE GetCarDesc_DefPara
+
+(@CID INT = 301)
+
+AS
+
+BEGIN
+
+SET NOCOUNT ON
+
+SELECT C.CarID,C.CarName,CD.CarDescription  FROM 
+
+Car C
+
+INNER JOIN CarDescription CD ON C.CarID=CD.CarID
+
+WHERE C.CarID=@CID
+
+END
+--------------------------------------------*************************************----------------------------------------
+diff b/w sql and nosql
+
+sql                                                                                             nosql
+
+*SQL databases are classified as Relational databases, i.e., RDBMS.
+NoSQL databases are known as non-relational or distributed database.
+Language
+
+*SQL databases use standard Structured Query Languages, as the name suggests.
+SQL is an industry-standard and very powerful language to execute complex queries.
+NoSQL database has dynamic schema for unstructured data. The data stored in a NoSQL database is not structured.
+Data could be stored as document-oriented, column oriented, graph-based or organized 
+as a Key-Value store. The syntax can vary from database to database.
+
+*Scalability
+SQL databases can extend their capacity on a single server by increasing their RAM, CPU or SSD.
+SQL databases are scalable vertically, as their storage could be increased for the same server
+ by enhancing their storage components.
+In order to increase the capacity of a NoSQL database, you would have to install new servers parallel to the parent server.
+NoSQL databases are horizontally scalable which means they can easily handle more traffic by adding new servers to the
+ database, which makes them a great choice for large and constantly changing databases.
+
+*Schema
+SQL databases have a fixed, pre-defined schema, which makes the data storage more rigid, static, and restrictive.
+NoSQL databases don’t have a pre-defined schema, which makes them schema-less and more flexible.
+
+*Internal implementation
+SQL follows ACID (Atomicity, Consistency, Isolation and Durability) properties for its operations.
+NoSQL is based on CAP (Consistency, Availability, and Partition Tolerance).
+
+*Performance and suitability
+SQL databases are best suited for complex queries but are not preferred for hierarchical large data storage.
+NoSQL databases are not so good for complex queries because these are not as powerful as SQL queries but 
+are best suited for hierarchical large data storage.
+
+Examples
+SQL databases are implemented in both open source and commercial databases such as like Postgres & MySQL 
+as open source and Oracle and Sqlite as commercial.
+NoSQL is purely open source. Some of its famous implementation are MongoDB, BigTable,
+ Redis, RavenDB, Cassandra, Hbase, Neo4j, and CouchDB.
+---------------------------------------------------------------------********************-----------------------
+Q diff b/w mysql and postgresql
+MySQL is a purely relational database, whereas PostgreSQL is an object-relational database. 
+-------------------------------------------------------------******************------------------------------------------------
+
+View => Views in SQL are considered as a virtual table. A view also contains rows and columns.
+To create the view, we can select the fields from one or more tables present in the database.
+A view can either have specific rows based on certain condition or all the rows of a table.
+
+Advantages of View:
+Complexity: Views help to reduce the complexity. Different views can be created on the same base table for different users.
+Security: It increases the security by excluding the sensitive information from the view.
+Consistency: A view can present a consistent, unchanged image of the structure of the database.
+ Views can be used to rename the columns without affecting the base table.
+Storage Capacity: Views take very little space to store the data.
+
+ex:  
+
+CREATE VIEW DetailsView AS  
+SELECT NAME, ADDRESS  
+FROM Student_Details  
+WHERE STU_ID < 4;  
+
+disadvantage=>
+
+*You cannot INSERT if the base table has any not null column that do not appear in view.
+*You can't pass parameters to the SQL server views.
+*You can't be created view on temporary tables.
+---------------------------------------------------*********************------------------------------------------
+Temporary table =>
+
+A temporary (temp) table in SQL Server is a special table that cannot be stored permanently on the database server.
+ This table keeps a subset of data from a regular table and can be reused multiple times in a particular session
+
+*SELECT name, age, gender  
+INTO #MaleStudents  
+FROM Student  
+WHERE gender = 'Male'  
+
+
+_______________________________________________________________________________________________________________________
